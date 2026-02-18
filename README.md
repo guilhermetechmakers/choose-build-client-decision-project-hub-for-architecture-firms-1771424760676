@@ -1,73 +1,43 @@
-# React + TypeScript + Vite
+# Choose & Build — Client Decision & Project Hub for Architecture Firms
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A centralized project management and client-decision platform for architecture firms: timeline, Decision Log, approvals, contextual messaging, and audit-ready records.
 
-Currently, two official plugins are available:
+## Tech stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 18, TypeScript, Vite
+- React Router 6, TanStack React Query
+- Tailwind CSS v3, Radix UI, Sonner, Recharts
+- React Hook Form, Zod
 
-## React Compiler
+## Install and build
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+If you use `NODE_ENV=production`, install dev dependencies explicitly:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install --include=dev
 ```
+
+Then:
+
+```bash
+npm run build
+```
+
+## Routes
+
+- `/` — Landing
+- `/login`, `/signup`, `/forgot-password` — Auth
+- `/dashboard` — Overview (protected)
+- `/dashboard/projects` — Projects list
+- `/dashboard/projects/:projectId` — Project board (timeline)
+- `/dashboard/projects/:projectId/decisions` — Decision log
+- `/dashboard/projects/:projectId/decisions/new` — Create decision
+- `/dashboard/messages`, `/dashboard/files`, `/dashboard/meetings`, `/dashboard/templates`, `/dashboard/reports`
+- `/dashboard/settings`, `/dashboard/profile`, `/dashboard/billing`, `/dashboard/checkout`
+- `/dashboard/admin`, `/dashboard/admin/users`
+- `/privacy`, `/terms`, `/cookies`, `/help`
+- `*` — 404
